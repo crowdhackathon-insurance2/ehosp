@@ -55,10 +55,16 @@ byte blockcontent_fname[16] = {"NIKOLAOS"};
 byte readbackblock_fname[18];
 
 // -----------------Block of AMKA-----------------
-int block_amka=6;//block address of First Name 
-byte blockcontent_amka[16] = {"1103900424"};
-//byte blockcontent_amka[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int block_amka=31;//block address of AMKA 
+//byte blockcontent_amka[16] = {"123456789"};
+byte blockcontent_amka[16] = {1,2,3,4,5,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_amka[18];
+
+// -----------------Block of Blood Type-----------------
+int block_blood=12;//block address of AMKA 
+byte blockcontent_blood[16] = {"A+"};
+//byte blockcontent_blood[16] = {1,2,3,4,5,0,0,0,0,0,0,0,0,0,0,0};
+byte readbackblock_blood[18];
 
 void loop()
 {
@@ -107,6 +113,7 @@ void loop()
            Serial.write (readbackblock[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
          }
          Serial.println("");
+         Serial.println("---------------");
 
    //-----------------Write & Read First Name-----------------      
          readBlock(block_fname, readbackblock_fname);//read the block back
@@ -122,7 +129,15 @@ void loop()
          Serial.print("AMKA: ");
          for (int j=0 ; j<16 ; j++)//print the block contents
          {
-           Serial.write (readbackblock_amka[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+           Serial.write (readbackblock_amka[j]);
+         }
+         Serial.println("");
+   //-----------------Write & Read Blood Type-----------------      
+         readBlock(block_blood, readbackblock_blood);//read the block back
+         Serial.print("blood type: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_blood[j]);
          }
          Serial.println("");
 
