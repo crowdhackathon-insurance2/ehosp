@@ -1,0 +1,12 @@
+server/node_modules
+server/public/hot
+server/public/storage
+server/storage/*.key
+server/vendor
+server/.idea
+server/.vagrant
+server/Homestead.json
+server/Homestead.yaml
+server/npm-debug.log
+server/yarn-error.log
+server/.env
