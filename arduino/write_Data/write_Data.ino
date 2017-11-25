@@ -42,17 +42,24 @@ void setup() {
         }
 
 }
-// Block Last Name
+// -----------------Block of Last Name-----------------
 int block=2;//this is the block number we will write into and then read. Do not write into 'sector trailer' block, since this can make the block unusable.
 byte blockcontent[16] = {"PAPADOPOULOS"};//an array with 16 bytes to be written into one of the 64 card blocks is defined!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //byte blockcontent[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//all zeros. This can be used to delete a block.
 byte readbackblock[18];//This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
 
-// Block First Name
+// -----------------Block of First Name-----------------
 int block_fname=4;//block address of First Name 
 byte blockcontent_fname[16] = {"NIKOLAOS"};
 //byte blockcontent_fname[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_fname[18];
+
+// -----------------Block of AMKA-----------------
+int block_amka=6;//block address of First Name 
+byte blockcontent_amka[16] = {"1103900424"};
+//byte blockcontent_amka[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+byte readbackblock_amka[18];
+
 void loop()
 {
 
@@ -83,25 +90,43 @@ void loop()
          
          /*****************************************writing and reading a block on the card**********************************************************************/
          
-         writeBlock(block, blockcontent);//the blockcontent array is written into the card block
+         
          //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
          
-         //The 'PICC_DumpToSerial' method 'dumps' the entire MIFARE data block into the serial monitor. Very useful while programming a sketch with the RFID reader...
-         //Notes:
-         //(1) MIFARE cards conceal key A in all trailer blocks, and shows 0x00 instead of 0xFF. This is a secutiry feature. Key B appears to be public by default.
-         //(2) The card needs to be on the reader for the entire duration of the dump. If it is removed prematurely, the dump interrupts and an error message will appear.
-         //(3) The dump takes longer than the time alloted for interaction per pairing between reader and card, i.e. the readBlock function below will produce a timeout if
-         //    the dump is used.
          
+         
+   
    //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));//uncomment this if you want to see the entire 1k memory with the block written into it.
-         
+   
+   //-----------------Write & Read Last Name-----------------  
+         writeBlock(block, blockcontent);  //the blockcontent array is written into the card block  
          readBlock(block, readbackblock);//read the block back
-         Serial.print("read block: ");
+         Serial.print("Last Name: ");
          for (int j=0 ; j<16 ; j++)//print the block contents
          {
            Serial.write (readbackblock[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
          }
          Serial.println("");
+
+   //-----------------Write & Read First Name-----------------      
+         readBlock(block_fname, readbackblock_fname);//read the block back
+         Serial.print("First Name: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_fname[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+         }
+         Serial.println("");
+
+   //-----------------Write & Read AMKA-----------------      
+         readBlock(block_amka, readbackblock_amka);//read the block back
+         Serial.print("AMKA: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_amka[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+         }
+         Serial.println("");
+
+   
          
  
 }
