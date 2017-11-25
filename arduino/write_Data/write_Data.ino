@@ -55,7 +55,7 @@ byte blockcontent_fname[16] = {"NIKOLAOS"};
 byte readbackblock_fname[18];
 
 // -----------------Block of AMKA-----------------
-int block_amka=4;//block address of First Name 
+int block_amka=8;//block address of First Name 
 byte blockcontent_amka[16] = {"2103900424"};
 //byte blockcontent_amka[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_amka[18];
@@ -115,6 +115,17 @@ void loop()
            Serial.write (readbackblock_fname[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
          }
          Serial.println("");
+
+   //-----------------Write & Read AMKA-----------------      
+         readBlock(block_amka, readbackblock_amka);//read the block back
+         Serial.print("read block: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_amka[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+         }
+         Serial.println("");
+
+   
          
  
 }
