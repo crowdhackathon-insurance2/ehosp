@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->post('/validation', 'API\Validation@index');
+Route::middleware('auth:api')->post('/validation/step1', 'API\Validation@step1');
+Route::middleware('auth:api')->post('/validation/step2', 'API\Validation@step2');
