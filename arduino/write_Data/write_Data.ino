@@ -42,15 +42,17 @@ void setup() {
         }
 
 }
-
+// Block Last Name
 int block=2;//this is the block number we will write into and then read. Do not write into 'sector trailer' block, since this can make the block unusable.
-//Serial.println("Last Name:"); 
-                         
 byte blockcontent[16] = {"PAPADOPOULOS"};//an array with 16 bytes to be written into one of the 64 card blocks is defined!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //byte blockcontent[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//all zeros. This can be used to delete a block.
 byte readbackblock[18];//This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
 
-
+// Block First Name
+int block_fname=4;//block address of First Name 
+byte blockcontent_fname[16] = {"NIKOLAOS"};
+//byte blockcontent_fname[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+byte readbackblock_fname[18];
 void loop()
 {
 
