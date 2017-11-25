@@ -55,8 +55,8 @@ byte blockcontent_fname[16] = {"NIKOLAOS"};
 byte readbackblock_fname[18];
 
 // -----------------Block of AMKA-----------------
-int block_amka=8;//block address of First Name 
-byte blockcontent_amka[16] = {"2103900424"};
+int block_amka=6;//block address of First Name 
+byte blockcontent_amka[16] = {"1103900424"};
 //byte blockcontent_amka[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_amka[18];
 
@@ -90,7 +90,7 @@ void loop()
          
          /*****************************************writing and reading a block on the card**********************************************************************/
          
-         writeBlock(block, blockcontent);//the blockcontent array is written into the card block
+         
          //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
          
          
@@ -98,9 +98,10 @@ void loop()
    
    //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));//uncomment this if you want to see the entire 1k memory with the block written into it.
    
-   //-----------------Write & Read Last Name-----------------      
+   //-----------------Write & Read Last Name-----------------  
+         writeBlock(block, blockcontent);  //the blockcontent array is written into the card block  
          readBlock(block, readbackblock);//read the block back
-         Serial.print("read block: ");
+         Serial.print("Last Name: ");
          for (int j=0 ; j<16 ; j++)//print the block contents
          {
            Serial.write (readbackblock[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
@@ -109,7 +110,7 @@ void loop()
 
    //-----------------Write & Read First Name-----------------      
          readBlock(block_fname, readbackblock_fname);//read the block back
-         Serial.print("read block: ");
+         Serial.print("First Name: ");
          for (int j=0 ; j<16 ; j++)//print the block contents
          {
            Serial.write (readbackblock_fname[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
@@ -118,7 +119,7 @@ void loop()
 
    //-----------------Write & Read AMKA-----------------      
          readBlock(block_amka, readbackblock_amka);//read the block back
-         Serial.print("read block: ");
+         Serial.print("AMKA: ");
          for (int j=0 ; j<16 ; j++)//print the block contents
          {
            Serial.write (readbackblock_amka[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
