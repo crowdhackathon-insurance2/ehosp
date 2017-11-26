@@ -16,8 +16,14 @@
                         </div>
                     @endif
 
+                    <p>
+                        Ανάλογα με το ρόλο του χρήστη (π.χ. νοσοκόμος, ιατρός, ασφαλιστής κλπ.)
+                        θα εμφανίζεται και η αντίστοιχη σελίδα-υπηρεσία.
+                    </p>
+
                     <a class="btn btn-primary btn-lg" href="{{ route('hospital') }}" type="button"> Hospital </a>
                     <a class="btn btn-primary btn-lg" href="{{ route('insurance') }}" type="button"> Insurance </a>
+                    <a class="btn btn-primary btn-lg" href="{{ route('api') }}" type="button"> API </a>
                 </div>
             </div>
         </div>
