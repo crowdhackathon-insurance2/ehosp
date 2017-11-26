@@ -16,6 +16,24 @@ void setup() {
   SPI.begin();
   rfid.PCD_Init();
 }
+// -----------------Block of Last Name-----------------
+int block=2;//block address of Last Name
+byte readbackblock[18];//This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
+
+// -----------------Block of First Name-----------------
+int block_fname=4;//block address of First Name 
+byte readbackblock_fname[18];
+
+// -----------------Block of AMKA-----------------
+int block_amka=6;//block address of AMKA 
+byte readbackblock_amka[18];
+
+// -----------------Block of Blood Type-----------------
+int block_blood=8;//block address of blood type 
+byte readbackblock_blood[18];
+// -----------------Block of Organ Donor-----------------
+int block_don=10;//block address of organ donor
+byte readbackblock_don[18];
 
 void loop() {
   if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
