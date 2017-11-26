@@ -1,20 +1,26 @@
 // Source from https://www.ioxhop.com/article/37/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%82%E0%B8%A1%E0%B8%94%E0%B8%B9%E0%B8%A5%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99-rfid-%E0%B8%81%E0%B8%B1%E0%B8%9A-arduino-%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%86
 
-#include "SPI.h"
-#include "MFRC522.h"
+#include <SPI.h>//include the SPI bus library
+#include <MFRC522.h>//include the RFID reader library
 
-#define SS_PIN 10
-#define RST_PIN 9
-#define SP_PIN 8
-
-MFRC522 rfid(SS_PIN, RST_PIN);
-
-MFRC522::MIFARE_Key key;
+#define SS_PIN 10  //slave select pin
+#define RST_PIN 5  //reset pin
+MFRC522 mfrc522(SS_PIN, RST_PIN);        // instatiate a MFRC522 reader object.
+MFRC522::MIFARE_Key key;//create a MIFARE_Key struct named 'key', which will hold the card information
 
 void setup() {
-  Serial.begin(9600);
-  SPI.begin();
-  rfid.PCD_Init();
+  Serial.begin(9600);        // Initialize serial communications with the PC
+        SPI.begin();               // Init SPI bus
+        mfrc522.PCD_Init();        // Init MFRC522 card (in case you wonder what PCD means: proximity coupling device)
+        Serial.println("Scan a MIFARE Classic card");
+        
+        // Prepare the security key for the read and write functions - all six key bytes are set to 0xFF at chip delivery from the factory.
+        // Since the cards in the kit are new and the keys were never defined, they are 0xFF
+        // if we had a card that was programmed by someone else, we would need to know the key to be able to access it. This key would then need to be stored in 'key' instead.
+ 
+        for (byte i = 0; i < 6; i++) {
+                key.keyByte[i] = 0xFF;//keyByte is defined in the "MIFARE_Key" 'struct' definition in the .h file of the library
+        }
 }
 // -----------------Block of Last Name-----------------
 int block=2;//block address of Last Name
@@ -36,36 +42,7 @@ int block_don=10;//block address of organ donor
 byte readbackblock_don[18];
 
 void loop() {
-  if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
-    return;
-
-  // Serial.print(F("PICC type: "));
-  MFRC522::PICC_Type piccType = rfid.PICC_GetType(rfid.uid.sak);
-  // Serial.println(rfid.PICC_GetTypeName(piccType));
-
-  // Check is the PICC of Classic MIFARE type
-  if (piccType != MFRC522::PICC_TYPE_MIFARE_MINI &&
-    piccType != MFRC522::PICC_TYPE_MIFARE_1K &&
-    piccType != MFRC522::PICC_TYPE_MIFARE_4K) {
-    Serial.println(F("Your tag is not of type MIFARE Classic."));
-    return;
-  }
-
-  String strID = "";
-  for (byte i = 0; i < 4; i++) {
-    strID +=
-    (rfid.uid.uidByte[i] < 0x10 ? "0" : "") +
-    String(rfid.uid.uidByte[i], HEX) +
-    (i!=3 ? ":" : "");
-  }
-  strID.toUpperCase();
-
   
-  Serial.print("Tap card key: ");
-  Serial.println(strID);
-
-  rfid.PICC_HaltA();
-  rfid.PCD_StopCrypto1();
   //-----------------------------------------------------------------------------------------------------------
  /*****************************************establishing contact with a tag/card**********************************************************************/
         
