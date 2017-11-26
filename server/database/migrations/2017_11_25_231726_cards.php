@@ -15,8 +15,10 @@ class Cards extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->string('card_id')->unique();
-            $table->string('user_id');
-            $table->timestamps();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
         });
     }
 
