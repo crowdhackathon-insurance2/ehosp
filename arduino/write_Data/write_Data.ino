@@ -57,7 +57,7 @@ byte readbackblock_fname[18];
 // -----------------Block of AMKA-----------------
 int block_amka=6;//block address of AMKA 
 byte blockcontent_amka[16] = {"123456789"};
-//byte blockcontent_amka[16] = {1,2,3,4,5,0,0,0,0,0,0,0,0,0,0,0};
+//byte blockcontent_amka[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_amka[18];
 
 // -----------------Block of Blood Type-----------------
