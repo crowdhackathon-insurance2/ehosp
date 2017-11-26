@@ -1,3 +1,4 @@
+# Laravel ignore
 server/node_modules
 server/public/hot
 server/public/storage
@@ -10,3 +11,6 @@ server/Homestead.yaml
 server/npm-debug.log
 server/yarn-error.log
 server/.env
+
+# Blockchain ignore
+blockchain/node_modules

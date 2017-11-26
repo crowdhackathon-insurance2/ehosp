@@ -5,6 +5,7 @@
     - LEMP stack running
 - Laravel framework
     ```
+    cd server
     composer install
     yarn install
     cp .env.example .env
@@ -22,5 +23,13 @@
 # Arduino Installation
 
 # Blockchain Installation
+
+- Requirements
+    - NodeJS v8.4.0
+    - Yarn 0.27.5
+```
+cd blockchain
+yarn install
+```
 
 - Metamask Plugin https://github.com/MetaMask/metamask-extension/releases (https://metamask.io/#how-it-works)
