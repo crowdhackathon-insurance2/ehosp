@@ -13,9 +13,9 @@ class Validation extends Controller
         return $request->input('card_id');
     }
 
-    public function step2()
+    public function step2(Request $request)
     {
         // POST extra password received from SMS from step1
-        return 'validation step2';
+        return $request->input('passcode');
     }
 }

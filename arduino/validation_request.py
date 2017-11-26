@@ -21,5 +21,9 @@ print(response1.text)
 
 # Validation - Step 2
 url2 = "http://127.0.0.1:8000/api/validation/step2"
-response2 = requests.request("POST", url2, headers=headers)
+passcode = input() # enter the passcode from the 2FA SMS
+payload2 = {
+    "passcode": passcode
+}
+response2 = requests.request("POST", url2, data=payload2, headers=headers)
 print(response2.text)
