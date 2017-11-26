@@ -21,7 +21,8 @@
     ```
 
 # Arduino Installation
-
+ - Open the connetions.png for arduino wire connections
+ - Install mfrc522 library in arduino IDE 
 # Blockchain Installation
 
 - Requirements
