@@ -2,6 +2,9 @@ import requests
 
 # TODO: send the unique card_id
 # Validation - Step 1
+#card ID
+card_id="1D:52:A6:A9"
+
 url1 = "http://127.0.0.1:8000/api/validation/step1"
 headers = {
     'accept': "application/json",
