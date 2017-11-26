@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ethereumjs-testrpc": "^6.0.3",
+    "web3": "0.20.1"
+  }
+}
