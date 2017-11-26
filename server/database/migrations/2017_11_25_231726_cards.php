@@ -15,7 +15,7 @@ class Cards extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->string('card_id')->unique();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
