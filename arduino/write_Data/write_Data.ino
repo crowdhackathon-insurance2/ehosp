@@ -65,6 +65,12 @@ int block_blood=8;//block address of AMKA
 byte blockcontent_blood[16] = {"A+"};
 //byte blockcontent_blood[16] = {1,2,3,4,5,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_blood[18];
+// -----------------Block of Organ Donor-----------------
+// -----------------Block of Blood Type-----------------
+int block_don=10;//block address of AMKA 
+byte blockcontent_don[16] = {"YES"};
+//byte blockcontent_blood[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+byte readbackblock_don[18];
 
 void loop()
 {
@@ -147,8 +153,19 @@ void loop()
          }
          Serial.println("");
          Serial.println("----------------------------");
+ 
 
-   
+   //-----------------Write & Read Donor-----------------      
+         writeBlock(block_don, blockcontent_don);
+         readBlock(block_don, readbackblock_don);//read the block back
+         Serial.print("Organ Donor: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_don[j]);
+         }
+         Serial.println("");
+         Serial.println("----------------------------");
+ 
          
  
 }
