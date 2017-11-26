@@ -61,13 +61,12 @@ byte blockcontent_amka[16] = {"123456789"};
 byte readbackblock_amka[18];
 
 // -----------------Block of Blood Type-----------------
-int block_blood=8;//block address of AMKA 
+int block_blood=8;//block address of blood type 
 byte blockcontent_blood[16] = {"A+"};
 //byte blockcontent_blood[16] = {1,2,3,4,5,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_blood[18];
 // -----------------Block of Organ Donor-----------------
-// -----------------Block of Blood Type-----------------
-int block_don=10;//block address of AMKA 
+int block_don=10;//block address of organ donor
 byte blockcontent_don[16] = {"YES"};
 //byte blockcontent_blood[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 byte readbackblock_don[18];
