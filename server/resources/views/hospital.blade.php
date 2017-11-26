@@ -29,6 +29,8 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <button class="btn btn-primary btn-lg" type="button">Αίτηση ιατρικού ιστορικού</button>
                 </div>
             </div>
             <div class="panel panel-default">
