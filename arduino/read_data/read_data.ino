@@ -66,4 +66,81 @@ void loop() {
 
   rfid.PICC_HaltA();
   rfid.PCD_StopCrypto1();
+  //-----------------------------------------------------------------------------------------------------------
+ /*****************************************establishing contact with a tag/card**********************************************************************/
+        
+    // Look for new cards (in case you wonder what PICC means: proximity integrated circuit card)
+  if ( ! mfrc522.PICC_IsNewCardPresent()) {//if PICC_IsNewCardPresent returns 1, a new card has been found and we continue
+    return;//if it did not find a new card is returns a '0' and we return to the start of the loop
+  }
+
+  // Select one of the cards
+  if ( ! mfrc522.PICC_ReadCardSerial()) {//if PICC_ReadCardSerial returns 1, the "uid" struct (see MFRC522.h lines 238-45)) contains the ID of the read card.
+    return;//if it returns a '0' something went wrong and we return to the start of the loop
+  }
+
+        
+         
+         Serial.println("card selected");
+         Serial.println("");
+         Serial.println("----------------------------");
+ /***************************************** reading blocks on the card**********************************************************************/   
+   
+   //-----------------Read Last Name-----------------   
+         readBlock(block, readbackblock);//read the block back
+         Serial.print("Last Name: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+         }
+         Serial.println("");
+         Serial.println("----------------------------");
+
+   //----------------- Read First Name-----------------      
+         
+         readBlock(block_fname, readbackblock_fname);//read the block back
+         Serial.print("First Name: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_fname[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+         }
+         Serial.println("");
+         Serial.println("----------------------------");
+
+   //----------------- Read AMKA-----------------      
+         readBlock(block_amka, readbackblock_amka);//read the block back
+         Serial.print("AMKA: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_amka[j]);
+         }
+         Serial.println("");
+         Serial.println("----------------------------");
+         
+   //----------------- & Read Blood Type-----------------      
+        
+         readBlock(block_blood, readbackblock_blood);//read the block back
+         Serial.print("blood type: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_blood[j]);
+         }
+         Serial.println("");
+         Serial.println("----------------------------");
+ 
+
+   //----------------- Read Donor-----------------      
+         
+         readBlock(block_don, readbackblock_don);//read the block back
+         Serial.print("Organ Donor: ");
+         for (int j=0 ; j<16 ; j++)//print the block contents
+         {
+           Serial.write (readbackblock_don[j]);
+         }
+         Serial.println("");
+         Serial.println("----------------------------");
+ 
+         
+
+  
 }
