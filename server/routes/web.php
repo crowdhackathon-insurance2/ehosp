@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/api', 'ApiController@index')->name('api');
 Route::get('/hospital', 'HospitalController@index')->name('hospital');
 Route::get('/insurance', 'InsuranceController@index')->name('insurance');
