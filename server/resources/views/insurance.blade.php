@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div >
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -11,9 +11,11 @@
 
                 <div class="panel-body">
                 <div class="container">
-  <h2>Hover Rows</h2>
-  <p>The .table-hover class enables a hover state on table rows:</p>            
-  <table class="table table-hover">
+  
+             
+  
+</div>
+<table class="table table-hover">
     <thead>
       <tr>
         <th>Κωδικος Συμβολαίου</th>
@@ -28,11 +30,13 @@
         <td>AC-5422</td>
         <td>PAPADOPOULOS NIKOLAOS</td>
         <td>1234</td>
+        <td>10.000$</td>
+        <td>Πακέτο ατυχήματος: Κάλυψη ιατροφαρμακευτικών εξόδων από ατύχημα, κεφάλαιο σε περίπτωση απώλειας ζωής ή ανικανότητας και βοήθεια στην καθημερινότητα μετά από σοβαρό περιστατικό</td>
+        
       </tr>
       
     </tbody>
   </table>
-</div>
 
                 </div>
             </div>
