@@ -40,9 +40,7 @@ void loop() {
   }
   strID.toUpperCase();
 
-  // เมื่อถึงส่วนนี้ ตัวแปร strID จะเก็บค่า UID ของแท็กไว้แล้ว
-  // สามารถนำไปใช้งานได้เลย เช่น นำไปเข้า IF เพื่อให้หลอด
-  // LED ติดสว่าง หรือดับได้
+  
   Serial.print("Tap card key: ");
   Serial.println(strID);
 
