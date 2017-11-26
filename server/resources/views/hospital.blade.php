@@ -30,7 +30,7 @@
                         </tbody>
                     </table>
 
-                    <button class="btn btn-primary btn-lg" type="button">Αίτηση ιατρικού ιστορικού</button>
+                    <button class="btn btn-primary btn-lg" type="button">Προβολή ιατρικού ιστορικού</button>
                 </div>
             </div>
             <div class="panel panel-default">

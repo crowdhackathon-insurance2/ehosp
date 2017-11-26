@@ -22,7 +22,7 @@
                     </p>
 
                     <a class="btn btn-primary btn-lg" href="{{ route('hospital') }}" type="button"> Hospital </a>
-                    <a class="btn btn-primary btn-lg" href="{{ route('insurance') }}" type="button"> Insurance </a>
+                    <!-- <a class="btn btn-primary btn-lg" href="{{ route('insurance') }}" type="button"> Insurance </a> -->
                     <a class="btn btn-primary btn-lg" href="{{ route('api') }}" type="button"> API </a>
                 </div>
             </div>
