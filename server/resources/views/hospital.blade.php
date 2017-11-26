@@ -17,15 +17,17 @@
       <th>#</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Username</th>
+      <th>AMKA</th>
+      <th>Blood Type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>NIKOLAOS</td>
+      <td>PAPADOPOULOS</td>
+      <td>123456789</td>
+      <td>A+</td>
     </tr>
     
   </tbody>
